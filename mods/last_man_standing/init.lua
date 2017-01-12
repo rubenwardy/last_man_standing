@@ -85,6 +85,16 @@ last_man_standing.register_state("game", {
 		end
 	end,
 
+	on_joinplayer = function(self, player)
+		minetest.chat_send_player(player:get_player_name(),
+			"You'll need to wait until this round is over before you can join the game!")
+	end,
+
+	on_leaveplayer = function(self, player)
+		self.is_player_alive[player:get_player_name()] = nil
+		self:check_for_gameover_conditions()
+	end,
+
 	get_winner = function(self)
 		local winner_name = nil
 		for name, is_alive in pairs(self.is_player_alive) do
