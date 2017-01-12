@@ -99,6 +99,7 @@ last_man_standing.register_state("game", {
 		local winner = self:get_winner()
 		if winner then
 			minetest.chat_send_all(winner .. " won the game!")
+			mapgen.regenerate()
 			if #minetest.get_connected_players() < MIN_PLAYERS then
 				last_man_standing.set_state("waiting_for_players")
 			else

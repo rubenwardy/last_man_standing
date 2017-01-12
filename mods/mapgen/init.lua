@@ -2,6 +2,8 @@
 -- Aliases for map generator outputs
 --
 
+mapgen = {}
+
 minetest.register_alias("mapgen_stone", "air")
 minetest.register_alias("mapgen_dirt", "air")
 minetest.register_alias("mapgen_dirt_with_grass", "air")
@@ -86,3 +88,34 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	vm:set_data(data)
 	vm:write_to_map(data)
 end)
+
+function mapgen.regenerate()
+	-- -- Set up voxel manip
+	-- local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
+	-- local a = VoxelArea:new{
+	-- 		MinEdge={x=-ARENA_W/2, y=0, z=0},
+	-- 		MaxEdge={x=ARENA_W/2, y=1, z=ARENA_W},
+	-- }
+	-- local data = vm:get_data()
+	-- local c_platform = minetest.get_content_id("default:sand")
+	local ARENA_W = 30
+
+	-- Loop through
+	local y = 0
+	for z = 0, ARENA_W do
+		for x = -ARENA_W/2, ARENA_W do
+			-- local vi = a:index(x, y, z)
+			-- data[vi] = c_platform
+			minetest.set_node({
+				x = x,
+				y = 0,
+				z = z
+			}, {
+				name = "default:sand"
+			})
+		end
+	end
+	--
+	-- vm:set_data(data)
+	-- vm:write_to_map(data)
+end
