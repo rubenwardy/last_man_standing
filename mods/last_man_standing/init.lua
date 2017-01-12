@@ -20,6 +20,11 @@ local function restrict_to_observation_platform(player)
 end
 
 last_man_standing.register_state("waiting_for_players", {
+	init = function(self)
+		minetest.chat_send_all(
+			"Waiting for players to join before starting game...")
+	end,
+
 	on_joinplayer = function(self, player)
 		if #minetest.get_connected_players() >= MIN_PLAYERS then
 			last_man_standing.set_state("prematch")
