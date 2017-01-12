@@ -47,9 +47,15 @@ end
 minetest.after(0.5, last_man_standing.step)
 
 minetest.register_on_joinplayer(function(...)
-	last_man_standing.get_state():on_joinplayer(...)
+	local state = last_man_standing.get_state()
+	if state.on_joinplayer then
+		state:on_joinplayer(...)
+	end
 end)
 
 minetest.register_on_leaveplayer(function(...)
-	last_man_standing.get_state():on_leaveplayer(...)
+	local state = last_man_standing.get_state()
+	if state.on_leaveplayer then
+		state:on_leaveplayer(...)
+	end
 end)
