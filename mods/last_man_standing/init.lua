@@ -1,5 +1,9 @@
 dofile(minetest.get_modpath("last_man_standing") .. "/api.lua")
 
+function minetest.item_place_node(itemstack, placer, pointed_thing, param2)
+	return itemstack
+end
+
 local OBSERVATION_PLATFORM_POS = {
 	x = -15,
 	y = 11,
