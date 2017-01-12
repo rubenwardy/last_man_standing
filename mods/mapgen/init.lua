@@ -53,14 +53,14 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local c_observation = minetest.get_content_id("default:stone_block")
 	local c_platform = minetest.get_content_id("default:sand")
 	local c_lava     = minetest.get_content_id("default:lava_source")
-	local ARENA_W = 30
+	local ARENA_W = 15
 
 	-- Loop through
 	for y = minp.y, maxp.y do
 		if y == 10 then
 				for z = minp.z, maxp.z do
 					for x = minp.x, maxp.x do
-						if x < -30 and x > -50 and z < ARENA_W and z > 0 then
+						if x < -20 and x > -50 and z < ARENA_W and z > 0 then
 							local vi = a:index(x, y, z)
 							data[vi] = c_observation
 						end

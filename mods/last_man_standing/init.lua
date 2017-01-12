@@ -5,7 +5,7 @@ function minetest.item_place_node(itemstack, placer, pointed_thing, param2)
 end
 
 local OBSERVATION_PLATFORM_POS = {
-	x = -35,
+	x = -25,
 	y = 11,
 	z = 10
 }
@@ -39,7 +39,7 @@ last_man_standing.register_state("waiting_for_players", {
 
 last_man_standing.register_state("prematch", {
 	init = function(self)
-		self.count_down = 3
+		self.count_down = 10
 	end,
 
 	on_joinplayer = function(self, player)
