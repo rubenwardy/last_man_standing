@@ -81,10 +81,13 @@ last_man_standing.register_state("game", {
 		self.is_player_alive = {}
 		for _, player in pairs(minetest.get_connected_players()) do
 			self.is_player_alive[player:get_player_name()] = true
+
+			local ARENA_W = mapgen.ARENA_W
+
 			player:setpos({
-				x = 0,
+				x = (math.random() - 0.5) * (ARENA_W - 2) + 1,
 				y = 1,
-				z = 10
+				z = math.random() * (ARENA_W - 2) + 1
 			})
 			-- TODO: random placement
 		end
