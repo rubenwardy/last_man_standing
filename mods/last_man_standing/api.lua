@@ -3,6 +3,10 @@ last_man_standing = {
 	current_state = nil
 }
 
+function math.round(x)
+	return math.floor(x + 0.5)
+end
+
 function last_man_standing.get_state()
 	return last_man_standing.states[last_man_standing.current_state]
 end
@@ -14,6 +18,7 @@ function last_man_standing.set_state(name)
 		old_state:deinit()
 	end
 
+	print("State set to " .. name)
 	last_man_standing.current_state = name
 
 	local new_state = last_man_standing.get_state()
@@ -29,13 +34,13 @@ end
 
 function last_man_standing.step()
 	local state = last_man_standing.get_state()
-	if state.step then
-		state:step(0.5)
-	end
 	if state.player_step then
 		for _, player in pairs(minetest.get_connected_players()) do
 			state:player_step(player)
 		end
+	end
+	if state.step then
+		state:step(0.5)
 	end
 	minetest.after(0.5, last_man_standing.step)
 end
