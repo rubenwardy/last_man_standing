@@ -50,7 +50,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 			MaxEdge={x=emax.x, y=emax.y, z=emax.z},
 	}
 	local data = vm:get_data()
-	local c_observation = minetest.get_content_id("default:glass")
+	local c_observation = minetest.get_content_id("default:stone_block")
 	local c_platform = minetest.get_content_id("default:sand")
 	local c_lava     = minetest.get_content_id("default:lava_source")
 	local ARENA_W = 30
@@ -60,7 +60,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		if y == 10 then
 				for z = minp.z, maxp.z do
 					for x = minp.x, maxp.x do
-						if x < -10 and x > -50 and z < -10 and z > -50 then
+						if x < -30 and x > -50 and z < ARENA_W and z > 0 then
 							local vi = a:index(x, y, z)
 							data[vi] = c_observation
 						end

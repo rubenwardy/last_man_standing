@@ -14,7 +14,7 @@ minetest.register_node("default:stone_block", {
 	description = "Stone Block",
 	tiles = {"default_stone_block.png"},
 	is_ground_content = false,
-	groups = {cracky = 2, stone = 1},
+	groups = {},
 	sounds = default.node_sound_stone_defaults(),
 })
 

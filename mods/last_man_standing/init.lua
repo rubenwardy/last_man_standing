@@ -5,9 +5,9 @@ function minetest.item_place_node(itemstack, placer, pointed_thing, param2)
 end
 
 local OBSERVATION_PLATFORM_POS = {
-	x = -15,
+	x = -35,
 	y = 11,
-	z = -15
+	z = 10
 }
 
 local MIN_PLAYERS = 2
