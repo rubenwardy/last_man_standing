@@ -3,6 +3,7 @@
 --
 
 mapgen = {}
+mapgen.ARENA_W = 15
 
 minetest.register_alias("mapgen_stone", "air")
 minetest.register_alias("mapgen_dirt", "air")
@@ -53,7 +54,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local c_observation = minetest.get_content_id("default:stone_block")
 	local c_platform = minetest.get_content_id("default:sand")
 	local c_lava     = minetest.get_content_id("default:lava_source")
-	local ARENA_W = 15
+	local ARENA_W = mapgen.ARENA_W
 
 	-- Loop through
 	for y = minp.y, maxp.y do
@@ -98,7 +99,7 @@ function mapgen.regenerate()
 	-- }
 	-- local data = vm:get_data()
 	-- local c_platform = minetest.get_content_id("default:sand")
-	local ARENA_W = 30
+	local ARENA_W = mapgen.ARENA_W
 
 	-- Loop through
 	local y = 0
