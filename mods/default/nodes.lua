@@ -49,6 +49,7 @@ minetest.register_node("default:sand", {
 	is_ground_content = false,
 	groups = {crumbly = 3, sand = 1},
 	sounds = default.node_sound_sand_defaults(),
+	drop = "",
 })
 
 minetest.register_node("default:glass", {
